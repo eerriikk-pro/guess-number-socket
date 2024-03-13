@@ -3,7 +3,7 @@ class NumberGame:
         self.secret = secret
         self.guesses = 0
     
-    def check(self, guess):
+    def guess(self, guess: int):
         if not isinstance(guess, int):
             raise ValueError("Guess is not integer. Guess: " + str(guess))
         self.guesses += 1
@@ -21,7 +21,4 @@ class NumberGame:
     def clear_guesses(self):
         self.guesses = 0
         return 0
-    
-
-
     
