@@ -1,3 +1,5 @@
+from enum import Enum
+
 class NumberGame:
     def __init__(self, secret):
         self.secret = secret
@@ -8,11 +10,11 @@ class NumberGame:
             raise ValueError("Guess is not integer. Guess: " + str(guess))
         self.guesses += 1
         if self.secret == guess:
-            return 0
+            return GuessResult.GUESS_CORRECT
         if self.secret > guess:
-            return 1
+            return GuessResult.GUESS_TOO_SMALL
         if self.secret < guess:
-            return -1
+            return GuessResult.GUESS_TOO_LARGE
 
         
     def get_guesses(self):
@@ -22,3 +24,8 @@ class NumberGame:
         self.guesses = 0
         return 0
     
+class GuessResult(Enum):
+    GUESS_CORRECT = 0
+    GUESS_TOO_LARGE = 1
+    GUESS_TOO_SMALL = 2
+    GUESS_ERROR = 3
