@@ -18,10 +18,10 @@ with socket.socket() as s:
             if not data:
                 break
             data += d
-        guess_numb = int.from_bytes(data)
+        guess_numb = int.from_bytes(data, 'little')
         try:
             guess_result = game.guess(guess_numb)
         except ValueError:
-            conn.sendall(int.to_bytes(GuessResult.GUESS_ERROR))
+            conn.sendall(int.to_bytes(GuessResult.GUESS_ERROR.value), 'little')
         if guess_result:
-            conn.sendall(int.to_bytes(guess_result))
+            conn.sendall(int.to_bytes(guess_result), 'little')
