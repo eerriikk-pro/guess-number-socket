@@ -24,6 +24,9 @@ class NumberGame:
         self.guesses = 0
         return 0
     
+    def get_ans(self):
+        return self.secret
+    
 class GuessResult(Enum):
     GUESS_CORRECT = 0
     GUESS_TOO_LARGE = 1
